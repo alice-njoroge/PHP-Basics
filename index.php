@@ -21,12 +21,12 @@ $books = [
         "publishYear" => "2007"
     ]
 ];
-
-function filterByAuthor($books, $author)
+//making the filter function more generic -- to accept key, value options
+function filter($items, $key, $value)
 {
     $filteredBooks = [];
-    foreach ($books as $book) {
-        if ($book['author'] === $author) {
+    foreach ($items as $book) {
+        if ($book[$key] === $value ) {
             $filteredBooks[] = $book;
         }
     }
@@ -36,7 +36,7 @@ function filterByAuthor($books, $author)
 ?>
 
 <ul>
-    <?php foreach (filterByAuthor($books, 'Emily') as $book) : ?>
+    <?php foreach (filter($books, 'author','Peter') as $book) : ?>
         <li>
             <?= $book['name']; ?>
         </li>
