@@ -21,21 +21,11 @@ $books = [
         "publishYear" => "2007"
     ]
 ];
-//making the filter function more generic -- to accept key, value options
-function filter($items, $fn)
-{
-    $filteredBooks = [];
-    foreach ($items as $item) {
-        if ($fn($item) ) {
-            $filteredBooks[] = $item;
-        }
-    }
-    return $filteredBooks;
-}
+//making the inbuilt PHP filter function
 
-$filteredItems = filter($books, function ($book){
+$filteredItems = array_filter($books, function ($book){
     return $book["publishYear"] < 2005;
-})
+});
 
 ?>
 
