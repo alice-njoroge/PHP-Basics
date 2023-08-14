@@ -22,21 +22,27 @@ $books = [
     ]
 ];
 //making the filter function more generic -- to accept key, value options
-function filter($items, $key, $value)
+function filter($items, $fn)
 {
     $filteredBooks = [];
-    foreach ($items as $book) {
-        if ($book[$key] === $value ) {
-            $filteredBooks[] = $book;
+    foreach ($items as $item) {
+        if ($fn($item) ) {
+            $filteredBooks[] = $item;
         }
     }
     return $filteredBooks;
 }
 
+$filteredItems = filter($books, function ($book){
+    return $book["publishYear"] < 2005;
+})
+
 ?>
 
+
+
 <ul>
-    <?php foreach (filter($books, 'author','Peter') as $book) : ?>
+    <?php foreach ($filteredItems as $book) :   ?>
         <li>
             <?= $book['name']; ?>
         </li>
@@ -49,7 +55,7 @@ function filter($items, $key, $value)
 
 $movies = [
     [
-        "name" => "cursed away",
+        "name" => "cast away",
         "releaseYear" => 2019
     ], [
         "name" => "6 feet under",
