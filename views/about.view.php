@@ -5,8 +5,8 @@
 
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            <p> We are ... </p>
+
         </div>
-    </main>
+    </main>  <p> We are learning together... </p>
 
 <?php require('partials/footer.php') ?>
