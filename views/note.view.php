@@ -8,7 +8,7 @@ require('partials/head.php') ?>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             <a href="/notes" type="button"> Back </a>
                 <p>
-                    <?= $note['title'] ?>
+                    <?= htmlspecialchars($note['title']) ?>
                 </p>
         </div>
     </main>
