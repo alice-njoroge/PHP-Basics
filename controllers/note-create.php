@@ -11,6 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['body'] = "A body is required";
     }
 
+    if (strlen($_POST['title']) > 100){
+        $errors['body'] = "title cannot be more than 100 characters.";
+    }
+
     if (empty($errors)){
         $db->query('insert into notes(title, user_id) values(:title, :user_id)', [
             'title' => $title,
