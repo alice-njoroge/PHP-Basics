@@ -11,4 +11,4 @@ $note = $db->query("select * from notes where id = :id", ['id' => $id])->findOrF
 
 authorize($note['user_id'] !== $currentUserId, Response::FORBIDDEN);
 
-require "views/note.view.php";
+require "views/notes/show.view.php";
