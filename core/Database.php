@@ -1,5 +1,8 @@
 <?php
 
+namespace core;
+use PDO;
+
 class Database
 {
     public $connection;
@@ -7,7 +10,7 @@ class Database
 
     public function __construct($config, $username = 'root', $password = '')
     {
-        $dsn = "mysql:". http_build_query($config, '', ';');
+        $dsn = "mysql:" . http_build_query($config, '', ';');
 
         $this->connection = new PDO($dsn, $username, $password, [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
@@ -21,21 +24,23 @@ class Database
 
         return $this;
     }
+
     public function find()
     {
-       return $this->statement->fetch();
+        return $this->statement->fetch();
     }
 
     public function findOrFail()
     {
         $result = $this->find();
 
-        if(! $result){
+        if (!$result) {
             abort();
         }
 
         return $result;
     }
+
     public function all()
     {
         return $this->statement->fetchall();
