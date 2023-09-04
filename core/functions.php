@@ -27,3 +27,14 @@ function view($path, $attributes = []){
     extract($attributes);
     require base_url( 'views/' .$path);
 }
+
+function abort($code = 404)
+{
+    http_response_code($code);
+
+    require base_url("views/{$code}.php");
+
+    die();
+}
+
+

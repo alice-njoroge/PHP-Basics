@@ -4,6 +4,9 @@
 
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <p class= "ml-60 mb-10">
+                <a href="notes/create" class="text-green-500 hover:underline"> Create a note</a>
+            </p>
             <ul>
                 <?php foreach ($notes as $note): ?>
                     <li>
@@ -13,10 +16,6 @@
                     </li>
                 <?php endforeach; ?>
             </ul>
-
-            <p class="mt-10">
-                <a href="notes/create" class="text-green-500 hover:underline"> Create a note</a>
-            </p>
         </div>
     </main>
 
