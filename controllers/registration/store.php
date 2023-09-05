@@ -38,7 +38,7 @@ if ($user) {
     //if no --> register and login
     $db->query('INSERT INTO USERS (email, password) VALUES (:email, :password)', [
         'email' => $email,
-        'password' => $password
+        'password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
     $_SESSION['user'] = [
