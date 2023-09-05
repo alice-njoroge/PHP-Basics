@@ -2,9 +2,9 @@
 
 use core\Database;
 use core\Response;
+use core\App;
 
-$config = require  base_url("config.php");
-$db = new Database($config['database']);
+$db = App::resolve(Database::class);
 
 $id = $_GET['id'];
 $currentUserId = 1;

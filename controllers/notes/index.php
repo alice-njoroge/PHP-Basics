@@ -1,9 +1,9 @@
 <?php
 
+use core\App;
 use core\Database;
 
-$config = require base_url("config.php");
-$db = new Database($config['database']);
+$db = App::resolve(Database::class);
 
 $notes = $db->query("select * from notes")->all();
 

@@ -4,9 +4,9 @@
 
 use Core\Validator;
 use Core\Database;
+use core\App;
 
-$config = require base_url('config.php');
-$db = new Database($config['database']);
+$db = App::resolve(Database::class);
 
 $errors = [];
 
