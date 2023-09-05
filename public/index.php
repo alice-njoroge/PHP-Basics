@@ -2,6 +2,8 @@
 
 use core\Router;
 
+session_start();
+
 const BASE_URL = __DIR__ . '/../';
 require BASE_URL . "core/functions.php";
 
