@@ -54,12 +54,8 @@ class Router
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
                 //middleware
-              if ($route['middleware']){
-                  $middleware = Middleware::MAP[$route['middleware']];
-                  (new $middleware)->handle();
-              }
+                Middleware::resolve($route['middleware']);
 
-                //return the matched controller
                 return require base_url($route['controller']);
             }
         }
