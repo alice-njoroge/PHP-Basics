@@ -13,7 +13,7 @@ $errors = [];
 $db = App::resolve(Database::class);
 
 
-//validate email and password 
+//validate email and password
 if (!Validator::email($email) ||! Validator::string($password, 7)) {
     $errors['email'] = "A valid email address and password must be provided";
 }
