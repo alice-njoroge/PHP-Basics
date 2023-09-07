@@ -16,6 +16,11 @@ require base_url('views/partials/head.php') ?>
                         <input id="email" name="email"  autocomplete="email"  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
+                <div>
+                    <?php if (isset($errors['email'])) : ?>
+                        <p class="text-red-500 text-xs mt-2"> <?= $errors['email'] ?> </p>
+                    <?php endif; ?>
+                </div>
 
                 <div>
                     <div class="flex items-center justify-between">
@@ -25,8 +30,8 @@ require base_url('views/partials/head.php') ?>
                         <input id="password" name="password" type="password" autocomplete="current-password"  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                     <div>
-                        <?php if (isset($errors['email'])) : ?>
-                            <p class="text-red-500 text-xs mt-2"> <?= $errors['email'] ?> </p>
+                        <?php if (isset($errors['password'])) : ?>
+                            <p class="text-red-500 text-xs mt-2"> <?= $errors['password'] ?> </p>
                         <?php endif; ?>
                     </div>
                 </div>

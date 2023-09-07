@@ -4,27 +4,21 @@
 use core\Database;
 use core\Validator;
 use core\App;
+use \Http\Forms\LoginForm;
 
 //validate the email and password -- not empty and in correct format
 $email = $_POST['email'];
 $password = $_POST['password'];
-$errors = [];
 
 $db = App::resolve(Database::class);
 
-
-//validate email and password
-if (!Validator::email($email) ||! Validator::string($password, 7)) {
-    $errors['email'] = "A valid email address and password must be provided";
-}
-
-
-if (! empty($errors)) {
+$form = new LoginForm($email, $password);
+ if (! $form->validate($email, $password) ){
      view('sessions/create.view.php', [
-        'errors' => $errors
-    ]);
+         'errors' => $form->errors()
+     ]);
      exit();
-}
+ }
 
 //find if there is such a matching user in the db
 $user = $db->query("select * from users where email = :email", [
