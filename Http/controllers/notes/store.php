@@ -1,10 +1,10 @@
 <?php
 
 
-
-use Core\Validator;
-use Core\Database;
 use core\App;
+use core\Database;
+use Core\Validator;
+
 
 $db = App::resolve(Database::class);
 

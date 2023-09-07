@@ -56,7 +56,7 @@ class Router
                 //middleware
                 Middleware::resolve($route['middleware']);
 
-                return require base_url($route['controller']);
+                return require base_url('Http/controllers/' . $route['controller']);
             }
         }
 
