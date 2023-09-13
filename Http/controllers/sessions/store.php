@@ -13,18 +13,16 @@ $password = $_POST['password'];
 $db = App::resolve(Database::class);
 
 $form = new LoginForm();
- if (! $form->validate($email, $password) ){
-     view('sessions/create.view.php', [
-         'errors' => $form->errors()
-     ]);
-     exit();
- }
+if ($form->validate($email, $password)) {
 
- $auth = new Authenticator();
-if ( $auth->attempt($email, $password)){
-   redirect('/');
+    if ((new Authenticator)->attempt($email, $password)) {
+        redirect('/');
+    }
+    $form->error('password', 'No matching account for that email and password');
 }
 
-view('sessions/create.view.php');
+view('sessions/create.view.php', [
+    'errors' => $form->errors()
+]);
 
 
