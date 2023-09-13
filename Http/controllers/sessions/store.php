@@ -4,6 +4,7 @@
 use core\Authenticator;
 use core\Database;
 use core\App;
+use core\Session;
 use \Http\Forms\LoginForm;
 
 //validate the email and password -- not empty and in correct format
@@ -21,7 +22,7 @@ if ($form->validate($email, $password)) {
     $form->error('password', 'No matching account for that email and password');
 }
 
-$_SESSION['_flashed']['errors'] = $form->errors();
+Session::flash('errors',$form->errors());
 
 redirect('/login');
 

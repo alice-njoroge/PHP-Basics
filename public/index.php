@@ -1,6 +1,7 @@
 <?php
 
 use core\Router;
+use core\Session;
 
 session_start();
 
@@ -24,7 +25,9 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 $router->route($uri, $method);
 
-$_SESSION['_flashed'] = [];
+Session::unflash();
+
+
 
 
 
