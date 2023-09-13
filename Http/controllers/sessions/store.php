@@ -1,8 +1,8 @@
 <?php
 
 
+use core\Authenticator;
 use core\Database;
-use core\Validator;
 use core\App;
 use \Http\Forms\LoginForm;
 
@@ -12,7 +12,7 @@ $password = $_POST['password'];
 
 $db = App::resolve(Database::class);
 
-$form = new LoginForm($email, $password);
+$form = new LoginForm();
  if (! $form->validate($email, $password) ){
      view('sessions/create.view.php', [
          'errors' => $form->errors()
@@ -20,20 +20,11 @@ $form = new LoginForm($email, $password);
      exit();
  }
 
-//find if there is such a matching user in the db
-$user = $db->query("select * from users where email = :email", [
-    'email' => $email
-])->find();
-
-//is password correct? then add the email to the session and reroute the user to home page
-if ($user) {
-    if (password_verify($password, $user['password'])) {
-        login([
-            'email' => $email
-        ]);
-        header('location: /');
-        exit();
-    }
+ $auth = new Authenticator();
+if ( $auth->attempt($email, $password)){
+   redirect('/');
 }
+
+view('sessions/create.view.php');
 
 
