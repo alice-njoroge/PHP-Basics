@@ -1,0 +1,16 @@
+{
+    "name": "alice/demo",
+    "authors": [
+        {
+            "name": "Alice Wanjiku",
+            "email": "alicenjoroge707@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "core\\": "core/",
+            "Http\\": "Http/"
+        }
+    }
+}

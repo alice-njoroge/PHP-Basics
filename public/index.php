@@ -7,13 +7,8 @@ session_start();
 
 const BASE_URL = __DIR__ . '/../';
 require BASE_URL . "core/functions.php";
+require BASE_URL. "vendor/autoload.php";
 
-spl_autoload_register(function ($class) {
-    // Core\Database
-    $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
-
-    require base_url("{$class}.php");
-});
 
 require base_url("bootstrap.php");
 
